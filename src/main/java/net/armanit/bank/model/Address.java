@@ -33,6 +33,6 @@ public class Address extends BaseEntity {
     private String city;
 
     @NotBlank(message = "zipCode can't be empty.")
-    @Pattern(regexp = "(^$|[0-9]{5})", message = "Invalid zipcode")
+    @Pattern(regexp = "(^$|[0-9]{7})", message = "Invalid zipcode")
     private String zipCode;
 }

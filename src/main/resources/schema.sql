@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `address` (
 );
 
 CREATE TABLE IF NOT EXISTS `bank` (
-  `code` varchar(100)  PRIMARY KEY,
+  `code` int NOT NULL AUTO_INCREMENT  PRIMARY KEY,
   `name` varchar(100) NOT NULL,
   `address_id` int NULL,
   `created_at` TIMESTAMP NOT NULL,

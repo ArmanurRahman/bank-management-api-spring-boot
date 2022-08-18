@@ -2,8 +2,10 @@ package net.armanit.bank.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -13,9 +15,9 @@ import javax.validation.constraints.Size;
 public class Bank extends  BaseEntity{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "code")
-    @NotBlank(message = "Bank Code can't be empty")
-    @Size(max = 5, message = "Bank code can't be more than 5 character.")
     private String bankCode;
 
     @Column(name = "name")
@@ -25,5 +27,6 @@ public class Bank extends  BaseEntity{
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Address.class)
     @JoinColumn(name = "address_id", referencedColumnName = "addressId", nullable = true)
+    @Valid
     private Address bankAddress;
 }
