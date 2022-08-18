@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 @RequestMapping("api/bank")
@@ -25,7 +27,7 @@ public class BankController {
     AddressRepository addressRepository;
 
     @PostMapping("/create")
-    public ResponseEntity<Response> createBank(RequestEntity<Bank> requestEntity) {
+    public ResponseEntity<Response> createBank(@Valid RequestEntity<Bank> requestEntity) {
 
 //        log.info("address");
 //        System.out.println(payload.getBody().getBankCode());
