@@ -22,3 +22,16 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `updated_by` varchar(50) DEFAULT NULL,
   FOREIGN KEY (address_id) REFERENCES address(address_id)
 );
+
+CREATE TABLE IF NOT EXISTS `branch` (
+  `code` int NOT NULL AUTO_INCREMENT  PRIMARY KEY,
+  `name` varchar(100) NOT NULL,
+  `bank_code` int NULL,
+  `address_id` int NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  FOREIGN KEY (address_id) REFERENCES address(address_id),
+  FOREIGN KEY (bank_code) REFERENCES bank(code)
+);

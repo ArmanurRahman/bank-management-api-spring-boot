@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,4 +30,8 @@ public class Bank extends  BaseEntity{
     @JoinColumn(name = "address_id", referencedColumnName = "addressId", nullable = true)
     @Valid
     private Address bankAddress;
+
+    @OneToMany(mappedBy = "bank", fetch = FetchType.LAZY,
+                cascade = CascadeType.PERSIST, targetEntity = Branch.class)
+    private Set<Branch> branches;
 }
